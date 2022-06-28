@@ -27,7 +27,7 @@ class AuthController extends Controller
             'password'=>'required'
         ]);
         if ($validator->fails()) {
-            return response()->json($validator->errors());
+            return response()->json($validator->errors(),422);
         }
         $user = User::Create([
             'name'=>request('name'),
@@ -53,10 +53,17 @@ class AuthController extends Controller
      */
     public function login()
     {
+        $validator = Validator::make(request()->all(),[
+            'email'=>'required',
+            'password'=>'required'
+        ]);
+        if ($validator->fails()) {
+            return response()->json($validator->errors(),422);
+        }
         $credentials = request(['email', 'password']);
 
         if (! $token = auth()->attempt($credentials)) {
-            return response()->json(['error' => 'Unauthorized'], 401);
+            return response()->json(['error' => 'Email Belum Terdaftar'], 401);
         }
 
         return $this->respondWithToken($token);
@@ -69,7 +76,7 @@ class AuthController extends Controller
      */
     public function me()
     {
-        return response()->json(auth()->user());
+        return response()->json(auth()->User());
     }
 
     /**
