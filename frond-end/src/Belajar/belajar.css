@@ -1,0 +1,19 @@
+.app {
+    margin: o;
+    box-sizing: border-box;
+    background-color: antiquewhite;
+}
+.body{
+    width: 100vw;
+    height: 100vh;
+}
+.card-body{
+    width: 30%;
+    height: 300px;
+    border: 1px solid black;
+    box-shadow: 2px 0 5px rgb(53, 51, 51);
+    border-radius: 14px;
+    display: flex;
+    justify-content: center;
+    align-content: center ;
+}
