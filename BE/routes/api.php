@@ -1,9 +1,9 @@
 <?php
 
-use App\Http\Controllers\AuthController;
-use App\Http\Controllers\productController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ArticleController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +22,5 @@ Route::group(['middleware' => 'api','prefix' => 'auth'], function ($router) {
     Route::post('register', [AuthController::class,'register']);
     Route::post('logout',[AuthController::class,'logout'] );
     Route::post('refresh',[AuthController::class,'refresh']);
-    Route::get('product',[productController::class,'index']);
 });
-Route::apiResource('product',productController::class);
+Route::apiResource('article',ArticleController::class);
